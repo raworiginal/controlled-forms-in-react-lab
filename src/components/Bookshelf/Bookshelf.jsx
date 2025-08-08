@@ -5,6 +5,28 @@ const Bookshelf = () => {
 		{ title: "Dungeon Crawler Carl", author: "Matt Dinniman" },
 		{ title: "The Parable of The Sower", author: "Octavia Butler" },
 	]);
+
+	const [newBook, setNewBook] = useState({
+		title: "",
+		author: "",
+	});
+
+	const handleInputChange = (event) => {
+		setNewBook({
+			...newBook,
+			[event.target.name]: event.target.value,
+		});
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		setbooks(...books, newBook);
+		setNewBook({
+			title: "",
+			author: "",
+		});
+	};
+
 	return (
 		<div className="bookshelfDiv">
 			<div className="formDiv">
